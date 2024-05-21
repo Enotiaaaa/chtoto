@@ -1,0 +1,81 @@
+using System.Collections;
+//using System.Collections.Generic;
+using UnityEngine;
+
+public class AnimController : MonoBehaviour
+{
+private Animator anim;
+private bool isJumping;
+private float jumpTimeCounter;
+private float jumpTime;
+private Rigidbody2D rb;
+private bool isGrounded;
+public Transform groundPos;
+public float checkRadius;
+public LayerMask whatIsGround;
+private float jumpForce;
+private bool doubleJump;
+}
+
+  
+       void Start()
+{
+   
+       // groundPos = GameObject.Find("GroundPosition").transform;
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    
+    void Update()
+    {
+        //bool isJumping = false;
+        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+         {        
+            anim.SetBool("isRunning", true);
+         }
+        else 
+         {
+            anim.SetBool("isRunning", false);
+         }
+
+         isGrounded = Physics2D.OverlapCircle(groundPos.position,checkRadius,whatIsGround);
+    }
+      /*  if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetTrigger("takeOff");
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
+            rb.velocity = Vector2.up* jumpForce;
+        }
+
+        if (isGrounded == true)
+        {
+            doubleJump = false;
+            anim.SetBool("isJumping",false);
+        }
+         else {
+            anim.SetBool("isJumping",true);
+         }
+         
+         if (Input.GetKey(KeyCode.Space) && isJumping ==true)
+         {
+            if (jumpTimeCounter > 0)
+            {
+                rb.velocity = Vector2.up * jumpForce;
+                jumpTimeCounter -=Time.deltaTime;
+            }
+         }
+    
+
+}}
+   */    
+   
+    
+
+    
+
+
+  
+
+ 
